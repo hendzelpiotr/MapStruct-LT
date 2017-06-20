@@ -12,18 +12,20 @@ import java.util.List;
 /**
  * Created by phendzel on 6/20/2017.
  */
-@Mapper
+@Mapper(uses = EmployeeMapper.class)
 public interface CarMapper {
 
     CarMapper INSTANCE = Mappers.getMapper(CarMapper.class);
 
     @Mappings({
-            @Mapping(source = "color", target = "colour")
+            @Mapping(source = "color", target = "colour"),
+            @Mapping(source = "employee", target = "employeeDTO")
     })
     CarDTO convertToDTO(Car car);
 
     @Mappings({
-            @Mapping(source = "colour", target = "color")
+            @Mapping(source = "colour", target = "color"),
+            @Mapping(source = "employeeDTO", target = "employee")
     })
     Car convertToEntity(CarDTO carDTO);
 

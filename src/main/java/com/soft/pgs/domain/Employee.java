@@ -4,21 +4,24 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
- * Created by phendzel on 6/20/2017.
+ * Created by Piotr on 20.06.2017.
  */
 @Entity
 @Getter
 @Setter
-public class Car {
+public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    private String color;
+    private String name;
+    @OneToMany(mappedBy = "employee")
+    private List<Car> cars;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "employee_id")
-    private Employee employee;
+    @JoinColumn(name = "manager_id")
+    private Employee manager;
 
 }
