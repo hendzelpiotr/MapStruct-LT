@@ -1,6 +1,5 @@
 package com.soft.pgs.domain;
 
-import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,7 +17,6 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    @Getter(AccessLevel.NONE)
     private String name;
     @OneToMany(mappedBy = "employee")
     private List<Car> cars;
