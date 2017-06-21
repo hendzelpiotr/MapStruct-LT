@@ -18,6 +18,9 @@ import java.util.List;
 public class CarService {
 
     @Autowired
+    private CarMapper carMapper;
+
+    @Autowired
     private CarRepository carRepository;
 
     public List<CarDTO> getAllEmployees() {
@@ -27,7 +30,7 @@ public class CarService {
         * Some business logic
         *
         * */
-        return CarMapper.INSTANCE.convertToDTOs(cars);
+        return carMapper.convertToDTOs(cars);
     }
 
     public CarDTO getOne(Integer id) {

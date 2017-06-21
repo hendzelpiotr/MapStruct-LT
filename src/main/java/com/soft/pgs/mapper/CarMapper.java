@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Created by phendzel on 6/20/2017.
  */
-@Mapper(uses = EmployeeMapper.class)
+@Mapper(uses = EmployeeMapper.class, componentModel = "spring")
 public interface CarMapper {
 
     CarMapper INSTANCE = Mappers.getMapper(CarMapper.class);

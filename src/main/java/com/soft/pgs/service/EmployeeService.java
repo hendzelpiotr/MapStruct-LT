@@ -18,6 +18,9 @@ import java.util.List;
 public class EmployeeService {
 
     @Autowired
+    private EmployeeMapper employeeMapper;
+
+    @Autowired
     private EmployeeRepository employeeRepository;
 
     public List<EmployeeDTO> getAllEmployees() {
@@ -27,7 +30,7 @@ public class EmployeeService {
         * Some business logic
         *
         * */
-        return EmployeeMapper.INSTANCE.convertToDTOs(allEmployees);
+        return employeeMapper.convertToDTOs(allEmployees);
     }
 
     public EmployeeDTO getOne(Integer id) {

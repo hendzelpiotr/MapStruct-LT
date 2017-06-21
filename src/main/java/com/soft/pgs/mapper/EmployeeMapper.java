@@ -16,13 +16,14 @@ import java.util.stream.Collectors;
 /**
  * Created by Piotr on 20.06.2017.
  */
-@Mapper(uses = CarMapper.class, imports = {Collectors.class, Car.class}, nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION)
+@Mapper(uses = CarMapper.class, imports = {Collectors.class, Car.class}, nullValueCheckStrategy = NullValueCheckStrategy.ON_IMPLICIT_CONVERSION, componentModel = "spring")
 public interface EmployeeMapper {
 
     EmployeeMapper INSTANCE = Mappers.getMapper(EmployeeMapper.class);
 
     @Mappings({
-            @Mapping(target = "carsIds", source = "cars")
+            @Mapping(target = "carsIds", source = "cars"),
+            @Mapping(target = "managerId", source = "manager.id")
     })
     EmployeeDTO convertToDTO(Employee employee);
 
@@ -41,4 +42,5 @@ public interface EmployeeMapper {
         }
         return new ArrayList<>();
     }
+
 }
